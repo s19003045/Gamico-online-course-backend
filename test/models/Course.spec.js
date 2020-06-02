@@ -6,6 +6,8 @@ chai.use(require('sinon-chai'))
 
 const { expect } = chai
 
+// import db
+const db = require('../../models')
 // import sequelize-test-helpers
 const {
   sequelize,
@@ -131,6 +133,40 @@ describe('# Course model', () => {
       done()
     })
 
+  })
+
+  // test CRUD
+  context('action', () => {
+    let data = null
+
+    it('create', (done) => {
+      db.Course.create({}).then((course) => {
+        data = course
+        done()
+      })
+    })
+    it('read', (done) => {
+      db.Course.findByPk(data.id).then((course) => {
+        expect(data.id).to.be.equal(course.id)
+        done()
+      })
+    })
+    it('update', (done) => {
+      db.Course.update({}, { where: { id: data.id } }).then(() => {
+        db.Course.findByPk(data.id).then((course) => {
+          expect(data.updatedAt).to.be.not.equal(course.updatedAt)
+          done()
+        })
+      })
+    })
+    it('delete', (done) => {
+      db.Course.destroy({ where: { id: data.id } }).then(() => {
+        db.Course.findByPk(data.id).then((course) => {
+          expect(course).to.be.equal(null)
+          done()
+        })
+      })
+    })
   })
 })
 
