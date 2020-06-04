@@ -6,8 +6,10 @@
     "html"
   ],
   "check-coverage": true,
-  "lines": 10,
-  "statements": 10,
-  "functions": 10,
-  "branches": 10
+  "watermarks": {
+    "lines": [80, 95],
+    "functions": [80, 95],
+    "branches": [80, 95],
+    "statements": [80, 95]
+  }
 }

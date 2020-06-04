@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=development node app.js",
     "dev": "cross-env NODE_ENV=development nodemon app.js",
     "test": "cross-env NODE_ENV=test mocha test --exit --recursive --timeout 10000",
-    "cover": "cross-env NODE_ENV=test nyc --show-process-tree mocha test --recursive --exit"
+    "cover": "cross-env NODE_ENV=test nyc --show-process-tree mocha test --recursive --timeout 10000 --exit"
   },
   "author": "",
   "license": "ISC",
