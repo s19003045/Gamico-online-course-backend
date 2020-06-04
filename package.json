@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development node app.js",
     "dev": "cross-env NODE_ENV=development nodemon app.js",
-    "test": "cross-env NODE_ENV=test mocha test --exit --recursive --timeout 10000"
+    "test": "cross-env NODE_ENV=test mocha test --exit --recursive --timeout 10000",
+    "cover": "cross-env NODE_ENV=test nyc --show-process-tree mocha test --recursive --exit"
   },
   "author": "",
   "license": "ISC",
@@ -41,6 +42,7 @@
     "sinon-chai": "^3.3.0"
   },
   "devDependencies": {
+    "nyc": "^15.1.0",
     "sequelize-test-helpers": "^1.2.2",
     "supertest": "^3.3.0"
   }
